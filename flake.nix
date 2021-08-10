@@ -13,8 +13,6 @@
       in {
         packages.stacer =
           with pkgs ; stdenv.mkDerivation rec {
-            # { stdenv, cmake, fetchFromGitHub, lib, qtbase, wrapQtAppsHook, qtcharts, qttools }:
-            # stdenv.mkDerivation rec {
             pname = "Stacer";
             version = "1.1.0";
             src = fetchFromGitHub {
@@ -22,6 +20,11 @@
               repo = pname;
               rev = "v" + version;
               sha256 = "0qndzzkbq6abapvwq202kva8j619jdn9977sbqmmfs9zkjz4mbsd";
+            };
+            meta = with lib ; {
+              description = "Linux System Optimizer and Monitoring";
+              homepage = https://github.com/oguzhaninan/Stacer;
+              platforms = [ "x86_64-linux" ];
             };
             buildInputs = [ qt5.qtbase libsForQt5.qtcharts libsForQt5.qttools ];
             nativeBuildInputs = [ cmake qt5.wrapQtAppsHook ];
