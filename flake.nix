@@ -10,7 +10,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-      in {
+      in rec {
         packages.stacer =
           with pkgs ; stdenv.mkDerivation rec {
             pname = "Stacer";
@@ -54,8 +54,8 @@
       }
     ) // {
       overlay = final: prev: {
-        rofi-ttv = prev.rofi-ttv;
-        stacer = prev.stacer;
+        rofi-ttv = final.rofi-ttv;
+        stacer = final.stacer;
       };
     };
   # defaultPackage.x86_64-linux = self.packages.x86_64-linux.hello;
