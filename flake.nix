@@ -54,8 +54,8 @@
       }
     ) // {
       overlay = final: prev: {
-        rofi-ttv = final.rofi-ttv;
-        stacer = final.stacer;
+        rofi-ttv = prev.rofi-ttv;
+        stacer = prev.stacer;
       };
     };
   # defaultPackage.x86_64-linux = self.packages.x86_64-linux.hello;
