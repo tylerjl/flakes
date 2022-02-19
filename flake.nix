@@ -12,12 +12,14 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         packages.stacer = pkgs.callPackage ./stacer {};
+        packages.rofi-totp = pkgs.callPackage ./rofi-totp {};
         packages.rofi-ttv = pkgs.callPackage ./rofi-ttv {};
         defaultPackage = self.packages.${system}.stacer;
       }
     ) // {
       overlay = final: prev: {
         rofi-ttv = prev.callPackage ./rofi-ttv {};
+        rofi-totp = prev.callPackage ./rofi-totp {};
         stacer = prev.callPackage ./stacer {};
       };
     };
