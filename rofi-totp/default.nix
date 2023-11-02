@@ -1,1 +1,10 @@
-{ pkgs }: pkgs.writers.writeBashBin "rofi-totp" (builtins.readFile ./rofi-totp.sh)
+{ pkgs, ... }: pkgs.writeShellApplication {
+  name = "rofi-totp";
+  runtimeInputs = with pkgs; [
+    coreutils
+    dunst
+    libnotify
+    yubikey-manager
+  ];
+  text = builtins.readFile ./rofi-totp.sh;
+}
