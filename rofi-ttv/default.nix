@@ -1,21 +1,21 @@
 { pkgs, lib, ... }:
 with pkgs ; stdenv.mkDerivation rec {
   pname = "rofi-ttv";
-  version = "20220115";
+  version = "20250204";
   src = fetchFromGitHub {
-    owner = "loiccoyle";
+    owner = "tylerjl";
     repo = pname;
-    rev = "e9c722481b740196165f840771b3ae58b7291694";
-    sha256 = "sha256-1cvjxulpfOIwipLBa9me4YGLVxSXOAsrFvFq/Q5y0tQ=";
+    rev = "bbf2610c17eca490b92035c23a2360e255170a0e";
+    sha256 = "sha256-TbaEOsREJ4idMf28wBE9szBTwfOvgK5v90hrJPaljFY=";
   };
   installPhase = ''
     install -vd $out/bin
     install -vm 755 rofi-ttv $out/bin
   '';
-  meta = with lib ; {
+  meta = {
     description = "Dynamic menu interface for twitch";
-    homepage = https://github.com/loiccoyle/rofi-ttv;
+    homepage = "https://github.com/tylerjl/rofi-ttv";
     platforms = [ "x86_64-linux" ];
   };
-  buildInputs = [ curl jq rofi mpv ];
+  buildInputs = [ curl jq rofi mpv yt-dlp ];
 }
